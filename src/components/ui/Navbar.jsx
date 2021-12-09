@@ -3,6 +3,11 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 export const Navbar = () => {
+    
+    //TODO por hacer
+    const handleLogout = () =>{
+        console.log('Logout')
+    }
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
             
@@ -17,18 +22,20 @@ export const Navbar = () => {
                 <div className="navbar-nav">
 
                     <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
+                        style={({isActive }) =>  {
+                            if(isActive) return {color:'#1096ea', borderBottom:'2px solid #1096ea'}
+                        }}
+                        className={({isActive}) => 'nav-item nav-link ' + (isActive ? 'activo' : '')} 
                         to="/marvel"
                     >
                         Marvel
                     </NavLink>
 
-                    <NavLink 
-                        activeClassName="active"
+                    <NavLink
+                        style={({isActive }) =>  {
+                            if(isActive) return {color:'#1096ea', borderBottom:'2px solid #1096ea'}
+                        }} 
                         className="nav-item nav-link" 
-                        exact
                         to="/dc"
                     >
                         DC
@@ -36,16 +43,16 @@ export const Navbar = () => {
                 </div>
             </div>
 
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
                 <ul className="navbar-nav ml-auto">
-                    <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
+                    <span className = 'nav-item nav-link text-info' >Marcos</span>
+                    <button 
+                        className="nav-item nav-link btn" 
                         to="/login"
+                        onClick={handleLogout}
                     >
                         Logout
-                    </NavLink>
+                    </button>
                 </ul>
             </div>
         </nav>
