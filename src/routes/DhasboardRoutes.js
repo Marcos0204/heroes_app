@@ -10,13 +10,15 @@ export const DhasboardRoutes = () => {
     return (
         <>
             <Navbar/>
-            <Routes>
-                <Route path="marvel" element={<MarvelScreen/> } />
-                <Route path="dc" element={<DcScreen/> } />
-                <Route path="search" element={<SearchScreen/> } />
-                <Route path="hero" element={<Hero/> } />
-                <Route path="/" element={<MarvelScreen/> } />
-            </Routes>
+            <div className='container mt-10'>
+                <Routes>
+                    <Route path="marvel" element={<MarvelScreen/> } />
+                    <Route path="dc" element={<DcScreen/> } />
+                    <Route path="search" element={<SearchScreen/> } />
+                    <Route path="hero" element={<Hero/> } />
+                    <Route path="/" element={<MarvelScreen/> } />
+                </Routes>
+            </div>
         </>
     )
 }
