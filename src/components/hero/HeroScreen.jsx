@@ -1,14 +1,20 @@
-import React from 'react'
+import React, {useState, useMemo} from 'react'
 import { useParams, Navigate, useNavigate } from 'react-router-dom'
 import { getHeroesById } from '../../selectores/getHeroesById'
 
+
 export const HeroScreen = () => {
+    
+
     const {heroeID} = useParams()
     const navigate = useNavigate()
-    const hero = getHeroesById(heroeID)
+
+    ///obtener el objeto del heroe
+    const hero = useMemo(()=>  getHeroesById(heroeID), [heroeID])
     //console.log(hero)
     const handleReturn = () => {
-        navigate( -1 );
+       navigate( -1 );
+    
     }
     ///si el heroe no existe
     if(!hero) return <Navigate to='/' />
@@ -49,7 +55,7 @@ export const HeroScreen = () => {
                 className="btn btn-outline-info"
                 onClick={ handleReturn }
             >
-                Regresar 
+                Regresar
             </button>
 
         </div>
