@@ -43,6 +43,15 @@ export const Navbar = () => {
                     >
                         DC
                     </NavLink>
+                    <NavLink
+                        style={({isActive }) =>  {
+                            if(isActive) return {color:'#1096ea', borderBottom:'2px solid #1096ea'}
+                        }} 
+                        className="nav-item nav-link" 
+                        to="/search"
+                    >
+                        search
+                    </NavLink>
                 </div>
             </div>
 
