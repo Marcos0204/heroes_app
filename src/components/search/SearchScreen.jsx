@@ -9,13 +9,13 @@ import { HeroCard } from '../hero/HeroCard';
 
 export const SearchScreen = () => {
     
-    const [ searchText, setSearchText ] = useState('')
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location)
 
-    // const { q = '' } = queryString.parse(location.search);
+    const { q = '' } = queryString.parse(location.search);
     
+    const [ searchText, setSearchText ] = useState(q)
     // const [ formValues, handleInputChange ] = useForm({
     //     searchText: q,
     // });
@@ -23,7 +23,7 @@ export const SearchScreen = () => {
     // const { searchText } = formValues;
 
     // const heroesFileted = useMemo( () => getHeroesByName(q), [q] );
-     const heroesFileted = getHeroesByName('')
+     const heroesFileted = getHeroesByName( q )
 
 
     const handleSearch = (e) => {
@@ -76,7 +76,7 @@ export const SearchScreen = () => {
                    
 
 
-                    {
+                    {heroesFileted &&
                         heroesFileted.map(hero => (
                             <HeroCard 
                                 key={ hero.id }
