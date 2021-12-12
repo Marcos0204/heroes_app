@@ -16,14 +16,9 @@ export const SearchScreen = () => {
     const { q = '' } = queryString.parse(location.search);
     
     const [ searchText, setSearchText ] = useState(q)
-    // const [ formValues, handleInputChange ] = useForm({
-    //     searchText: q,
-    // });
 
-    // const { searchText } = formValues;
-
-    // const heroesFileted = useMemo( () => getHeroesByName(q), [q] );
-     const heroesFileted = getHeroesByName( q )
+     const heroesFileted = useMemo( () => getHeroesByName(q), [q] );
+     
 
 
     const handleSearch = (e) => {
@@ -73,7 +68,12 @@ export const SearchScreen = () => {
                     <h4>Resultados</h4>
                     <hr />
 
-                   
+                    {
+                        (q === '')
+                            ? <div className="alert alert-info"> Buscar un héroe </div>
+                            : ( heroesFileted.length === 0 ) 
+                                && <div className="alert alert-danger"> No hay resultados: { q } </div>
+                    }
 
 
                     {heroesFileted &&
