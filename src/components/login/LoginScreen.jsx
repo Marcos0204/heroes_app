@@ -9,6 +9,7 @@ export const LoginScreen = () => {
     const { dispatch } = useContext(AuthContext )
     
     const navigate = useNavigate()
+    const pathName = localStorage.getItem('lastPathname') || '/marvel'
 
     const handleLogin = () => {
         
@@ -19,7 +20,7 @@ export const LoginScreen = () => {
             }
         })
 
-        navigate('/marvel', {
+        navigate(pathName, {
             replace: true
         });
     }
