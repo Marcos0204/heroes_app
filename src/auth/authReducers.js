@@ -10,6 +10,7 @@ export const authReducers = ( state= {}, action ) => {
             }
 
         case Types.logout :
+            localStorage.removeItem('user')
             return {
                 logged: false
             }
