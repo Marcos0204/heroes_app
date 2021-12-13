@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { AppRoutes } from './routes/AppRoutes'
 import { AuthContext } from './auth/authContext'
 import { authReducers } from './auth/authReducers'
@@ -10,6 +10,12 @@ const init = () => {
 const HeroesApp = () => {
     
    const [ user, dispatch] = useReducer(authReducers, {}, init)
+
+   useEffect(() => {
+       if(!user) return;
+
+       localStorage.setItem('user', JSON.stringify(user) )
+   }, [user])
 
     return (
         <AuthContext.Provider

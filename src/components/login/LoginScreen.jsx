@@ -6,20 +6,22 @@ import { Types } from '../../types/Types'
 export const LoginScreen = () => {
     
     //context 
-    const {user: { dispatch }} = useContext(AuthContext )
-
-    //const navigate = useNavigate()
+    const { dispatch } = useContext(AuthContext )
+    
+    const navigate = useNavigate()
 
     const handleLogin = () => {
-        // navigate('/marvel', {
-        //     replace: true
-        // });
+        
         dispatch({
             type: Types.login,
             payload: {
                 name :'Marcos Bastidas'
             }
         })
+
+        navigate('/marvel', {
+            replace: true
+        });
     }
 
     return (
