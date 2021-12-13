@@ -18,7 +18,6 @@ export const SearchScreen = () => {
     const [ searchText, setSearchText ] = useState(q)
 
      const heroesFileted = useMemo( () => getHeroesByName(q), [q] );
-     
 
 
     const handleSearch = (e) => {
